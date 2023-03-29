@@ -35,14 +35,26 @@ public class CelebrityGame {
     /**
      * Determines if the supplied guess is correct.
      *
-     * @param guess
-     *            The supplied String
+     * @param guess The supplied String
      * @return Whether it matches regardless of case or extraneous external
-     *         spaces.
+     * spaces.
      */
     public boolean processGuess(String guess) {
-        return false; // stub
+        String trimmed = guess.trim().toLowerCase();
+        if (trimmed.equals(gameCelebrity.getAnswer().toLowerCase())) {
+            if (celebGameList.size() > 0) {
+                celebGameList.remove(0);
+                gameCelebrity = celebGameList.get(0);
+            } else {
+                gameCelebrity = new Celebrity("", "");
+            }
+            return true;
+            } else {
+            return false;
+        }
     }
+
+
 
     /**
      * Asserts that the list is initialized and contains at least one Celebrity.
@@ -50,7 +62,10 @@ public class CelebrityGame {
      * play screen.
      */
     public void play() {
-        System.out.println("PLAY!");
+        if(celebGameList != null && celebGameList.size() > 0){
+            gameCelebrity = celebGameList.get(0);
+            gameWindow.replaceScreen("game");
+        }
     }
 
     /**
@@ -108,7 +123,7 @@ public class CelebrityGame {
      * @return The String clue from the current celebrity.
      */
     public String sendClue() {
-        return null; // stub
+        return gameCelebrity.getClue();
     }
 
     /**
@@ -118,6 +133,6 @@ public class CelebrityGame {
      * @return The String answer from the current celebrity.
      */
     public String sendAnswer() {
-        return null; // stub
+        return gameCelebrity.getAnswer();
     }
 }

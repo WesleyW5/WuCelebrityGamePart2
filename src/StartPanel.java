@@ -94,7 +94,7 @@ public class StartPanel extends JPanel implements ActionListener {
      * Constructs a StartPanel with a reference to the game passed as a
      * parameter to be used as a data member.
      *
-     * @param controllerRef The reference to the game
+     * @param controllerRef  The reference to the game
      */
     public StartPanel(CelebrityGame controllerRef) {
         super();
@@ -175,7 +175,6 @@ public class StartPanel extends JPanel implements ActionListener {
     private void setupListeners() {
         addCelebrityButton.addActionListener(this);
         startButton.addActionListener(this);
-        // will code up the rest later
     }
 
     // interface method: gets called whenever a component with an
@@ -185,8 +184,8 @@ public class StartPanel extends JPanel implements ActionListener {
         JButton clickedButton = (JButton) source;
         String buttonText = clickedButton.getText();
 
-        // when "add celebrity" button gets clicked:
-        if(buttonText.equals("Add current celebrity")) {
+        if (buttonText.equals("Add current celebrity")) {
+            // when "add celebrity" button gets clicked:
             answerField.setBackground(Color.WHITE);
             clueField.setBackground(Color.WHITE);
             if (validate(answerField.getText(), clueField.getText())) {
@@ -196,12 +195,11 @@ public class StartPanel extends JPanel implements ActionListener {
             }
             celebrityCount = controller.getCelebrityGameSize();
             celebrityCountLabel.setText(countLabelText + celebrityCount);
-        } else if(buttonText.equals("Start Celebrity game")) {
+        } else if (buttonText.equals("Start Celebrity game")) {
+            // call play method when start button is clicked
             controller.play();
         }
     }
-
-
 
     /**
      * Validation method for the text to create a Celebrity object.
